@@ -3,16 +3,16 @@ Patient Readmission Risk Prediction
 
 📊 Project Overview
 
-This project analyzes patient demographic information, diagnoses, procedures, and hospital visit details to predict the likelihood of patient readmission within 30 days. The solution helps hospitals proactively identify at-risk patients and improve care coordination through data-driven insights.
+This project will include the analysis of the demographics, diagnosis, procedures, and details of the visits made to the hospital to predict the risk of the patient being readmitted to the hospital in 30 days. The solution assists hospitals in the active identification of at-risk patients and data-driven care coordination.
 
 📂 Data Source
 
-The dataset comes from the Health Facts database (Cerner Corporation) and contains 10 years of clinical care data from 130 US hospitals. 
-Key features include:
+Data are obtained on the Health Facts database (Cerner Corporation) that comprises 10-year data on clinical care through 130 US hospitals. 
+Important characteristics are:
 Demographic information
 Diagnosis codes (ICD-9)
-Medication details
-Hospital utilization metrics
+Medication Metrics
+Hospital utilization 
 Laboratory results
 
 Link:https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008
@@ -24,7 +24,7 @@ To run this project:
 # Clone repository
 git clone https://github.com/Yugalchaudhary01/patient_readmission_project.git
 
-# Create virtual environment
+# Design virtual environment
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate    # Windows
@@ -36,21 +36,16 @@ pip install -r requirements.txt
 
 Data Preprocessing
 
-Missing Values: Removed columns with >40% missing data
-Invalid Records: Filtered out deceased patients and unknown genders
-Feature Engineering:
-Created primary diagnosis categories from ICD-9 codes
-Added medication change flag
-Categorized hospital stay durations
-Target Variable: Binary readmission flag (<30 days)
+Missing Values: Dropped columns that had more than 40 percent of missing data 
+Invalid Records: Filtered out deaths and unknown gender 
+Incomplete Data: Created medication change flag created categories of the primary diagnosis based on the ICD-9 codes Categorized length of hospital stay 
+Dropped data that remained null Coded readmission outcome as a binary feature with over 30 days as 0 (no readmission) and anything less than 30 days as 1 (readmission)
 
 Model Development
-Model	Description	Key Parameters
-Logistic Regression	Baseline model	Class weighting for imbalance
-Random Forest	Advanced ensemble	150 trees, balanced classes
+ Model Description Key Parameters Logistic regression 
+ Base Generator model Class weighting imbalance Random forest Enhanced ensemble 150 trees balanced classes
 
-Evaluation Metrics
-Accuracy, Precision, Recall, F1-Score
+Evaluation metrics are Accuracy, Precision, recall, F1-Score
 
 ROC-AUC and Confusion Matrix
 
@@ -67,20 +62,14 @@ Random Forest	        0.681	    0.378	    0.642	0.479	    0.721
 Key Findings
 Top Predictive Features:
 
-Number of inpatient visits
-Number of medications
-Primary diagnosis (Circulatory issues)
-Time in hospital
-Number of lab procedures
+Length of inpatient stays 
+Number of medication 
+Number of primary diagnosis (Circulatory problems) Length of stay in hospital 
+Number of lab test that a patient undergoes
 
-High-Risk Patient Profile:
+Patient at risk Profile:
 
-Previous inpatient admissions
-Taking >20 medications
-Circulatory system diagnosis
-Long hospital stays (8+ days)
-
-
+Past inpatient visit Receiving more than 20 medications Cardiovascular disease diagnosis Lengthy stays in hospital (more than 8 days)
 
 📚 References
 Strack et al. (2014). "Diabetes 130-US hospitals dataset"
